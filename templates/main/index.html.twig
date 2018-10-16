@@ -1,0 +1,126 @@
+<div class="container">
+    <div class="title">Choose a character !</div>
+    {% for unit in units %}
+    <a class="bloc" href={{ path('chara', {'id' : unit.id}) }}>
+        <div class="left">
+            <div class="mugshot">
+                <img src={{unit.mugshot}} alt="mug">
+            </div>
+            <div class="name">
+                <p>{{unit.name}}</p>
+                <p>{{unit.unitClass.name}}
+                {% if unit.sex %} (m) {% else %} (f) {% endif %}</p>
+            </div>
+        </div>
+        <div class="about">
+            <p>Lvl:{{unit.level}}</p>
+            <p>HP:{{unit.stats.health}}</p>
+            <p>ATK:{{unit.stats.attack}}</p>
+            <p>MAG:{{unit.stats.magic}}</p>
+            <p>DEF:{{unit.stats.defense}}</p>
+            <p>RES:{{unit.stats.resistance}}</p>
+        </div>
+    </a>
+    {% endfor %}
+    <div class="bloc">
+        <a class="form" href={{ path('new') }}>Create a new character !</a>
+    </div>
+    
+</div>
+
+<style>
+@font-face {
+    font-family: "rcr";
+    src: url("font/RCR.ttf");
+}
+html, body {
+    width:100%;
+    height:100%;
+    margin:0;
+    display:flex;
+    background-color:#000;
+    font-size:32px;
+    font-family:"rcr";
+    -webkit-font-smoothing : none;
+}
+.container {
+    width:684px;
+    padding:50px 0 50px 0;
+    margin:auto;
+    display:flex;
+    flex-wrap:wrap;
+    color:#fff;
+}
+.title {
+    width:684px;
+    height:32px;
+    margin:10px;
+    text-align:center;
+    border: 4px solid #fff;
+    border-radius: 4px;
+}
+.bloc {
+    width:200px;
+    height:200px;
+    margin:10px;
+    display:flex;
+    flex-wrap:wrap;
+    border: 4px solid #fff;
+    border-radius: 4px;
+    text-decoration:none;
+    color:#fff;
+}
+.form {
+    margin:auto;
+    padding: 74px 0 74px 0;
+    text-align: center;
+    color:#fff;
+    text-decoration: none;
+}
+.form:hover{
+    background-color:#fff;
+    color:#000;
+}
+.mugshot {
+    width:88px;
+    height:80px;
+    margin-bottom:6px;
+    border: 4px solid #fff;
+    border-radius: 4px;
+}
+.left {
+    width:88px;
+    height:188px;
+    margin:6px;
+    display:flex;
+    flex-wrap:wrap;
+    vertical-align:middle;
+}
+.name {
+    width:88px;
+    height:80px;
+    margin:6px 0 6px 0;
+    display:flex;
+    flex-wrap:wrap;
+}
+.name p {
+    width:100%;
+    margin:auto;
+    text-align:center;
+}
+.about {
+    width:80px;
+    height:180px;
+    margin:6px;
+    display:flex;
+    flex-wrap:wrap;
+    vertical-align:middle;
+    border: 4px solid #fff;
+    border-radius: 4px;
+}
+.about p {
+    width:100%;
+    margin:auto;
+    text-align:center;
+}
+</style>
